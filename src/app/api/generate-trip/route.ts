@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { GoogleGenAI } from "@google/genai";
+import OpenAI from "openai";
 
 const SYSTEM_PROMPT = `You are Treva's AI Travel Architect — a world-class luxury travel concierge.
 Given a single-line travel wish from a client, generate a stunning, hyper-detailed trip suggestion.
@@ -54,39 +55,47 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const apiKey = process.env.GEMINI_API_KEY;
-    if (!apiKey) {
+    const openaiApiKey = process.env.OPENAI_API_KEY;
+    const geminiApiKey = process.env.GEMINI_API_KEY;
+
+    let text = "";
+
+    if (openaiApiKey && openaiApiKey !== "your_openai_api_key_here") {
+      // Use OpenAI GPT
+      const openai = new OpenAI({ apiKey: openaiApiKey });
+      const completion = await openai.chat.completions.create({
+        model: "gpt-4o-mini",
+        messages: [
+          { role: "system", content: SYSTEM_PROMPT },
+          { role: "user", content: `Client's travel wish: "${prompt.trim()}"` },
+        ],
+        response_format: { type: "json_object" },
+      });
+      text = completion.choices[0].message.content ?? "";
+    } else if (geminiApiKey && geminiApiKey !== "your_gemini_api_key_here") {
+      // Use Gemini as fallback or primary if OpenAI is not set
+      const ai = new GoogleGenAI({ apiKey: geminiApiKey });
+      const response = await ai.models.generateContent({
+        model: "gemini-2.0-flash",
+        contents: [
+          {
+            role: "user",
+            parts: [
+              { text: SYSTEM_PROMPT },
+              { text: `Client's travel wish: "${prompt.trim()}"` },
+            ],
+          },
+        ],
+      });
+      text = response.text ?? "";
+    } else {
       return NextResponse.json(
-        { error: "AI service not configured. Please set GEMINI_API_KEY." },
+        { error: "AI service not configured. Please set OPENAI_API_KEY or GEMINI_API_KEY." },
         { status: 500 }
       );
     }
 
-    const ai = new GoogleGenAI({ apiKey });
-
-    const response = await ai.models.generateContent({
-      model: "gemini-2.0-flash",
-      contents: [
-        {
-          role: "user",
-          parts: [
-            { text: SYSTEM_PROMPT },
-            {
-              text: `Client's travel wish: "${prompt.trim()}"`,
-            },
-          ],
-        },
-      ],
-      config: {
-        temperature: 0.9,
-        topP: 0.95,
-        maxOutputTokens: 4096,
-      },
-    });
-
-    const text = response.text ?? "";
-
-    // Clean up potential markdown code fences
+    // Clean up potential markdown code fences (mostly for Gemini)
     const cleaned = text
       .replace(/```json\s*/gi, "")
       .replace(/```\s*/g, "")
