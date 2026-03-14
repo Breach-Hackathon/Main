@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from "react";
+import Link from "next/link";
 import { useScroll, useSpring, useTransform } from "framer-motion";
 
 type Props = {
@@ -103,12 +104,12 @@ export default function HeroSequence({ images }: Props) {
             from runway to retreat.
           </p>
           <div className="pointer-events-auto mt-10 flex gap-4">
-            <button className="rounded-full border border-white px-10 py-3 text-[0.7rem] uppercase tracking-[0.3em] transition-colors hover:bg-white hover:text-black">
+            <Link href="/contact" className="inline-flex items-center justify-center rounded-full border border-white px-10 py-3 text-[0.7rem] uppercase tracking-[0.3em] transition-colors hover:bg-white hover:text-black">
               Schedule
-            </button>
-            <button className="hidden rounded-full bg-white/10 px-10 py-3 text-[0.7rem] uppercase tracking-[0.3em] backdrop-blur-md hover:bg-white/20 md:inline-flex">
+            </Link>
+            <Link href="/travel" className="hidden items-center justify-center rounded-full bg-white/10 px-10 py-3 text-[0.7rem] uppercase tracking-[0.3em] backdrop-blur-md hover:bg-white/20 md:inline-flex">
               Discover Villas
-            </button>
+            </Link>
           </div>
         </div>
       </div>

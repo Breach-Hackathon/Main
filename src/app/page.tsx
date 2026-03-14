@@ -1,43 +1,24 @@
 'use client';
 
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import HeroSequence from "@/components/canvas/HeroSequence";
 import Button from "@/components/ui/Button";
 import PackageCard from "@/components/ui/PackageCard";
 import AiTripPlanner from "@/components/ui/AiTripPlanner";
 import { useImagePreloader } from "@/hooks/useImagePreloader";
+import { travelData } from "@/data/travelData";
 
 const HERO_FRAMES = 264;
 
 export default function HomePage() {
   const hero = useImagePreloader("/Treva Hero Section", HERO_FRAMES);
+  const [contactSubmitted, setContactSubmitted] = useState(false);
 
   const isLoaded = hero.images.length > 0;
 
-  const destinations = useMemo(
-    () => [
-      {
-        title: "Amalfi by Helicopter",
-        subtitle: "Italy · 5 nights",
-        copy: "Arrive by private rotor, descend to a cantilevered villa, and dine in cliffside grottoes lit only by candlelight and the Tyrrhenian Sea.",
-        meta: "Signature Itinerary",
-      },
-      {
-        title: "Kyoto Hidden Ryokan",
-        subtitle: "Japan · 7 nights",
-        copy: "Tatami-mat suites, private onsen rituals, and after-hours access to lantern-lit districts reserved quietly for Treva guests.",
-        meta: "Cultural Immersion",
-      },
-      {
-        title: "Patagonia Sky Lodges",
-        subtitle: "Chile · 6 nights",
-        copy: "Glass-domed lodges beneath the southern sky, glacier landings, and chef-driven fire dinners far beyond the last trailhead.",
-        meta: "Expedition Luxury",
-      },
-    ],
-    [],
-  );
+  const destinations = travelData.slice(0, 3);
 
   if (!isLoaded) {
     return (
@@ -149,7 +130,9 @@ export default function HomePage() {
               <p className="text-[0.65rem] uppercase tracking-[0.3em] text-neutral-300">
                 Limited itineraries released each quarter.
               </p>
-              <Button variant="primary">Request season dossier</Button>
+              <Link href="/travel" className="inline-flex items-center justify-center rounded-full bg-accent px-8 py-3 text-[0.7rem] uppercase tracking-[0.3em] text-white transition-colors hover:bg-accent/90">
+                View all journeys
+              </Link>
             </div>
           </div>
         </div>
@@ -175,13 +158,21 @@ export default function HomePage() {
               transfers, and experiences you did not know to ask for.
             </p>
           </div>
-          <form className="space-y-4 rounded-3xl bg-white p-6 shadow-[0_20px_60px_rgba(15,23,42,0.12)] md:p-8">
+          <form 
+            onSubmit={(e) => {
+              e.preventDefault();
+              setContactSubmitted(true);
+              setTimeout(() => setContactSubmitted(false), 4000);
+            }}
+            className="space-y-4 rounded-3xl bg-white p-6 shadow-[0_20px_60px_rgba(15,23,42,0.12)] md:p-8"
+          >
             <div className="grid gap-4 md:grid-cols-2">
               <div className="space-y-1 text-xs">
                 <label className="uppercase tracking-[0.26em] text-neutral-500">
                   Name
                 </label>
                 <input
+                  required
                   className="w-full border-b border-neutral-200 bg-transparent pb-2 text-sm outline-none focus:border-accent"
                   placeholder="Your full name"
                 />
@@ -191,6 +182,7 @@ export default function HomePage() {
                   Email
                 </label>
                 <input
+                  required
                   className="w-full border-b border-neutral-200 bg-transparent pb-2 text-sm outline-none focus:border-accent"
                   placeholder="you@example.com"
                   type="email"
@@ -220,7 +212,7 @@ export default function HomePage() {
                 Response within one business day.
               </p>
               <Button type="submit" variant="outline">
-                Send request
+                {contactSubmitted ? "Sent ✓" : "Send request"}
               </Button>
             </div>
           </form>
