@@ -105,12 +105,15 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ trip });
   } catch (error: unknown) {
-    console.error("Trip generation error:", error);
+    console.error("Trip generation error:", JSON.stringify(error, Object.getOwnPropertyNames(error as object), 2));
 
-    const message =
-      error instanceof SyntaxError
-        ? "Failed to parse AI response. Please try again."
-        : "Something went wrong. Please try again.";
+    let message = "Something went wrong generating your trip. Please try again.";
+
+    if (error instanceof SyntaxError) {
+      message = "Failed to parse AI response. Please try again.";
+    } else if (error instanceof Error) {
+      message = error.message;
+    }
 
     return NextResponse.json({ error: message }, { status: 500 });
   }
