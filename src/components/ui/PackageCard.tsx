@@ -1,0 +1,32 @@
+type Props = {
+  title: string;
+  subtitle: string;
+  copy: string;
+  meta: string;
+};
+
+export default function PackageCard({ title, subtitle, copy, meta }: Props) {
+  return (
+    <article className="group flex flex-col justify-between rounded-3xl bg-white shadow-[0_20px_60px_rgba(15,23,42,0.08)] transition-transform hover:-translate-y-1">
+      <div className="space-y-3 p-6 md:p-8">
+        <p className="text-[0.65rem] uppercase tracking-[0.3em] text-accent">
+          {meta}
+        </p>
+        <h3 className="font-serif text-xl uppercase tracking-[0.18em] md:text-2xl">
+          {title}
+        </h3>
+        <p className="text-xs uppercase tracking-[0.26em] text-neutral-500">
+          {subtitle}
+        </p>
+        <p className="mt-3 text-sm leading-relaxed text-neutral-700">{copy}</p>
+      </div>
+      <div className="flex items-center justify-between border-t px-6 py-4 text-[0.65rem] uppercase tracking-[0.26em] text-neutral-500 md:px-8">
+        <span>Learn more</span>
+        <span className="text-accent group-hover:translate-x-1 group-hover:text-accent/80">
+          →
+        </span>
+      </div>
+    </article>
+  );
+}
+
