@@ -1,6 +1,43 @@
-[00:00:02.036] Server  LOG     ✓ Ready in 1293ms
-[00:01:31.752] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:01:32.014] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+[00:00:01.870] Server  LOG     ✓ Ready in 1193ms
+[00:00:03.169] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:03.189] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:03.338] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/ai-planner" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html
+                          lang="en"
+-                         data-jetski-tab-id="1485070369"
+                        >
+                  ...
+
+[00:00:03.521] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:03.706] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
 
 - A server/client branch `if (typeof window !== 'undefined')`.
 - Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
@@ -31,56 +68,12 @@ It can also happen if the client has a browser extension installed which messes 
                       <RootLayout>
                         <html
                           lang="en"
--                         data-jetski-tab-id="1485070369"
+-                         data-jetski-tab-id="1485070372"
                         >
                   ...
 
-[00:06:55.812] Server  LOG     ✓ Compiled in 158ms
-[00:06:57.257] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
-[00:07:30.094] Server  LOG     ✓ Compiled in 59ms
-[00:08:15.607] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:08:16.100] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
-
-- A server/client branch `if (typeof window !== 'undefined')`.
-- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
-- Date formatting in a user's locale which doesn't match the server.
-- External changing data without sending a snapshot of it along with the HTML.
-- Invalid HTML tag nesting.
-
-It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
-
-%s%s https://react.dev/link/hydration-mismatch 
-
-  ...
-    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
-      <AppDevOverlayErrorBoundary globalError={[...]}>
-        <ReplaySsrOnlyErrors>
-        <DevRootHTTPAccessFallbackBoundary>
-          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
-            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
-              <RedirectBoundary>
-                <RedirectErrorBoundary router={{...}}>
-                  <Head>
-                  <__next_root_layout_boundary__>
-                    <SegmentViewNode type="layout" pagePath="layout.tsx">
-                      <SegmentTrieNode>
-                      <link>
-                      <script>
-                      <script>
-                      <RootLayout>
-                        <html
-                          lang="en"
--                         data-jetski-tab-id="1485070369"
-                        >
-                  ...
-
-[00:08:16.333] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
-[00:08:40.184] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:08:41.965] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
-[00:30:05.090] Server  LOG     ✓ Compiled in 220ms
-[00:31:23.435] Server  LOG     ✓ Compiled in 185ms
-[00:31:46.854] Server  LOG     ✓ Compiled in 563ms
-[00:32:27.982] Server  LOG     ✓ Compiled in 61ms
-[00:32:40.310] Server  LOG     ✓ Compiled in 53ms
-[00:32:49.226] Server  LOG       Reload env: .env.local
-[00:33:42.536] Server  LOG     ✓ Compiled in 84ms
+[00:00:04.364] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
+[00:00:08.087] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:09.069] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
+[00:00:18.436] Server  ERROR   Trip generation error: "{\n  \"stack\": \"Error: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.\\n    at APIError.generate (D:\\\\Codes\\\\Hackathons\\\\Breach_PDEU\\\\Treva\\\\.next\\\\dev\\\\server\\\\chunks\\\\node_modules_openai_25629800._.js:176:20)\\n    at OpenAI.makeStatusError (D:\\\\Codes\\\\Hackathons\\\\Breach_PDEU\\\\Treva\\\\.next\\\\dev\\\\server\\\\chunks\\\\node_modules_openai_25629800._.js:9273:167)\\n    at OpenAI.makeRequest (D:\\\\Codes\\\\Hackathons\\\\Breach_PDEU\\\\Treva\\\\.next\\\\dev\\\\server\\\\chunks\\\\node_modules_openai_25629800._.js:9446:30)\\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\\n    at async POST (D:\\\\Codes\\\\Hackathons\\\\Breach_PDEU\\\\Treva\\\\.next\\\\dev\\\\server\\\\chunks\\\\[root-of-the-server]__7a12a449._.js:118:28)\\n    at async AppRouteRouteModule.do (D:\\\\Codes\\\\Hackathons\\\\Breach_PDEU\\\\Treva\\\\node_modules\\\\next\\\\dist\\\\compiled\\\\next-server\\\\app-route-turbo.runtime.dev.js:5:37866)\\n    at async AppRouteRouteModule.handle (D:\\\\Codes\\\\Hackathons\\\\Breach_PDEU\\\\Treva\\\\node_modules\\\\next\\\\dist\\\\compiled\\\\next-server\\\\app-route-turbo.runtime.dev.js:5:45156)\\n    at async responseGenerator (D:\\\\Codes\\\\Hackathons\\\\Breach_PDEU\\\\Treva\\\\.next\\\\dev\\\\server\\\\chunks\\\\node_modules_next_cd7452e3._.js:15344:38)\\n    at async AppRouteRouteModule.handleResponse (D:\\\\Codes\\\\Hackathons\\\\Breach_PDEU\\\\Treva\\\\node_modules\\\\next\\\\dist\\\\compiled\\\\next-server\\\\app-route-turbo.runtime.dev.js:1:191938)\\n    at async handleResponse (D:\\\\Codes\\\\Hackathons\\\\Breach_PDEU\\\\Treva\\\\.next\\\\dev\\\\server\\\\chunks\\\\node_modules_next_cd7452e3._.js:15407:32)\\n    at async Module.handler (D:\\\\Codes\\\\Hackathons\\\\Breach_PDEU\\\\Treva\\\\.next\\\\dev\\\\server\\\\chunks\\\\node_modules_next_cd7452e3._.js:15460:13)\\n    at async DevServer.renderToResponseWithComponentsImpl (D:\\\\Codes\\\\Hackathons\\\\Breach_PDEU\\\\Treva\\\\node_modules\\\\next\\\\dist\\\\server\\\\base-server.js:1442:9)\\n    at async DevServer.renderPageComponent (D:\\\\Codes\\\\Hackathons\\\\Breach_PDEU\\\\Treva\\\\node_modules\\\\next\\\\dist\\\\server\\\\base-server.js:1494:24)\\n    at async DevServer.renderToResponseImpl (D:\\\\Codes\\\\Hackathons\\\\Breach_PDEU\\\\Treva\\\\node_modules\\\\next\\\\dist\\\\server\\\\base-server.js:1544:32)\\n    at async DevServer.pipeImpl (D:\\\\Codes\\\\Hackathons\\\\Breach_PDEU\\\\Treva\\\\node_modules\\\\next\\\\dist\\\\server\\\\base-server.js:1038:25)\\n    at async NextNodeServer.handleCatchallRenderRequest (D:\\\\Codes\\\\Hackathons\\\\Breach_PDEU\\\\Treva\\\\node_modules\\\\next\\\\dist\\\\server\\\\next-server.js:395:17)\\n    at async DevServer.handleRequestImpl (D:\\\\Codes\\\\Hackathons\\\\Breach_PDEU\\\\Treva\\\\node_modules\\\\next\\\\dist\\\\server\\\\base-server.js:929:17)\\n    at async D:\\\\Codes\\\\Hackathons\\\\Breach_PDEU\\\\Treva\\\\node_modules\\\\next\\\\dist\\\\server\\\\dev\\\\next-dev-server.js:387:20\\n    at async Span.traceAsyncFn (D:\\\\Codes\\\\Hackathons\\\\Breach_PDEU\\\\Treva\\\\node_modules\\\\next\\\\dist\\\\trace\\\\trace.js:157:20)\\n    at async DevServer.handleRequest (D:\\\\Codes\\\\Hackathons\\\\Breach_PDEU\\\\Treva\\\\node_modules\\\\next\\\\dist\\\\server\\\\dev\\\\next-dev-server.js:383:24)\\n    at async invokeRender (D:\\\\Codes\\\\Hackathons\\\\Breach_PDEU\\\\Treva\\\\node_modules\\\\next\\\\dist\\\\server\\\\lib\\\\router-server.js:248:21)\\n    at async handleRequest (D:\\\\Codes\\\\Hackathons\\\\Breach_PDEU\\\\Treva\\\\node_modules\\\\next\\\\dist\\\\server\\\\lib\\\\router-server.js:447:24)\\n    at async requestHandlerImpl (D:\\\\Codes\\\\Hackathons\\\\Breach_PDEU\\\\Treva\\\\node_modules\\\\next\\\\dist\\\\server\\\\lib\\\\router-server.js:496:13)\\n    at async Server.requestListener (D:\\\\Codes\\\\Hackathons\\\\Breach_PDEU\\\\Treva\\\\node_modules\\\\next\\\\dist\\\\server\\\\lib\\\\start-server.js:226:13)\",\n  \"message\": \"429 You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.\",\n  \"status\": 429,\n  \"headers\": {},\n  \"requestID\": \"req_35a925f24e544322ba8324e0247f56fa\",\n  \"error\": {\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.\",\n    \"code\": \"insufficient_quota\",\n    \"param\": null,\n    \"type\": \"insufficient_quota\"\n  },\n  \"code\": \"insufficient_quota\",\n  \"param\": null,\n  \"type\": \"insufficient_quota\"\n}"
+[00:00:24.853] Server  ERROR   Trip generation error: "{\n  \"stack\": \"Error: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.\\n    at APIError.generate (D:\\\\Codes\\\\Hackathons\\\\Breach_PDEU\\\\Treva\\\\.next\\\\dev\\\\server\\\\chunks\\\\node_modules_openai_25629800._.js:176:20)\\n    at OpenAI.makeStatusError (D:\\\\Codes\\\\Hackathons\\\\Breach_PDEU\\\\Treva\\\\.next\\\\dev\\\\server\\\\chunks\\\\node_modules_openai_25629800._.js:9273:167)\\n    at OpenAI.makeRequest (D:\\\\Codes\\\\Hackathons\\\\Breach_PDEU\\\\Treva\\\\.next\\\\dev\\\\server\\\\chunks\\\\node_modules_openai_25629800._.js:9446:30)\\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\\n    at async POST (D:\\\\Codes\\\\Hackathons\\\\Breach_PDEU\\\\Treva\\\\.next\\\\dev\\\\server\\\\chunks\\\\[root-of-the-server]__7a12a449._.js:118:28)\\n    at async AppRouteRouteModule.do (D:\\\\Codes\\\\Hackathons\\\\Breach_PDEU\\\\Treva\\\\node_modules\\\\next\\\\dist\\\\compiled\\\\next-server\\\\app-route-turbo.runtime.dev.js:5:37866)\\n    at async AppRouteRouteModule.handle (D:\\\\Codes\\\\Hackathons\\\\Breach_PDEU\\\\Treva\\\\node_modules\\\\next\\\\dist\\\\compiled\\\\next-server\\\\app-route-turbo.runtime.dev.js:5:45156)\\n    at async responseGenerator (D:\\\\Codes\\\\Hackathons\\\\Breach_PDEU\\\\Treva\\\\.next\\\\dev\\\\server\\\\chunks\\\\node_modules_next_cd7452e3._.js:15344:38)\\n    at async AppRouteRouteModule.handleResponse (D:\\\\Codes\\\\Hackathons\\\\Breach_PDEU\\\\Treva\\\\node_modules\\\\next\\\\dist\\\\compiled\\\\next-server\\\\app-route-turbo.runtime.dev.js:1:191938)\\n    at async handleResponse (D:\\\\Codes\\\\Hackathons\\\\Breach_PDEU\\\\Treva\\\\.next\\\\dev\\\\server\\\\chunks\\\\node_modules_next_cd7452e3._.js:15407:32)\\n    at async Module.handler (D:\\\\Codes\\\\Hackathons\\\\Breach_PDEU\\\\Treva\\\\.next\\\\dev\\\\server\\\\chunks\\\\node_modules_next_cd7452e3._.js:15460:13)\\n    at async DevServer.renderToResponseWithComponentsImpl (D:\\\\Codes\\\\Hackathons\\\\Breach_PDEU\\\\Treva\\\\node_modules\\\\next\\\\dist\\\\server\\\\base-server.js:1442:9)\\n    at async DevServer.renderPageComponent (D:\\\\Codes\\\\Hackathons\\\\Breach_PDEU\\\\Treva\\\\node_modules\\\\next\\\\dist\\\\server\\\\base-server.js:1494:24)\\n    at async DevServer.renderToResponseImpl (D:\\\\Codes\\\\Hackathons\\\\Breach_PDEU\\\\Treva\\\\node_modules\\\\next\\\\dist\\\\server\\\\base-server.js:1544:32)\\n    at async DevServer.pipeImpl (D:\\\\Codes\\\\Hackathons\\\\Breach_PDEU\\\\Treva\\\\node_modules\\\\next\\\\dist\\\\server\\\\base-server.js:1038:25)\\n    at async NextNodeServer.handleCatchallRenderRequest (D:\\\\Codes\\\\Hackathons\\\\Breach_PDEU\\\\Treva\\\\node_modules\\\\next\\\\dist\\\\server\\\\next-server.js:395:17)\\n    at async DevServer.handleRequestImpl (D:\\\\Codes\\\\Hackathons\\\\Breach_PDEU\\\\Treva\\\\node_modules\\\\next\\\\dist\\\\server\\\\base-server.js:929:17)\\n    at async D:\\\\Codes\\\\Hackathons\\\\Breach_PDEU\\\\Treva\\\\node_modules\\\\next\\\\dist\\\\server\\\\dev\\\\next-dev-server.js:387:20\\n    at async Span.traceAsyncFn (D:\\\\Codes\\\\Hackathons\\\\Breach_PDEU\\\\Treva\\\\node_modules\\\\next\\\\dist\\\\trace\\\\trace.js:157:20)\\n    at async DevServer.handleRequest (D:\\\\Codes\\\\Hackathons\\\\Breach_PDEU\\\\Treva\\\\node_modules\\\\next\\\\dist\\\\server\\\\dev\\\\next-dev-server.js:383:24)\\n    at async invokeRender (D:\\\\Codes\\\\Hackathons\\\\Breach_PDEU\\\\Treva\\\\node_modules\\\\next\\\\dist\\\\server\\\\lib\\\\router-server.js:248:21)\\n    at async handleRequest (D:\\\\Codes\\\\Hackathons\\\\Breach_PDEU\\\\Treva\\\\node_modules\\\\next\\\\dist\\\\server\\\\lib\\\\router-server.js:447:24)\\n    at async requestHandlerImpl (D:\\\\Codes\\\\Hackathons\\\\Breach_PDEU\\\\Treva\\\\node_modules\\\\next\\\\dist\\\\server\\\\lib\\\\router-server.js:496:13)\\n    at async Server.requestListener (D:\\\\Codes\\\\Hackathons\\\\Breach_PDEU\\\\Treva\\\\node_modules\\\\next\\\\dist\\\\server\\\\lib\\\\start-server.js:226:13)\",\n  \"message\": \"429 You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.\",\n  \"status\": 429,\n  \"headers\": {},\n  \"requestID\": \"req_7543cecaa66b42cbaa2e0cdbd0459d13\",\n  \"error\": {\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.\",\n    \"code\": \"insufficient_quota\",\n    \"param\": null,\n    \"type\": \"insufficient_quota\"\n  },\n  \"code\": \"insufficient_quota\",\n  \"param\": null,\n  \"type\": \"insufficient_quota\"\n}"

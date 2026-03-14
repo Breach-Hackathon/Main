@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { GoogleGenAI } from "@google/genai";
+import OpenAI from "openai";
 
 const SYSTEM_PROMPT = `You are Treva's AI Travel Architect — a world-class luxury travel concierge.
 Given a single-line travel wish from a client, generate a stunning, hyper-detailed trip suggestion.
@@ -54,54 +54,42 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const apiKey = process.env.GEMINI_API_KEY;
+    const apiKey = process.env.OPENAI_API_KEY;
     if (!apiKey) {
       return NextResponse.json(
-        { error: "AI service not configured. Please set GEMINI_API_KEY." },
+        { error: "AI service not configured. Please set OPENAI_API_KEY in .env.local" },
         { status: 500 }
       );
     }
 
-    const ai = new GoogleGenAI({ apiKey });
+    const openai = new OpenAI({ apiKey });
 
-    const response = await ai.models.generateContent({
-      model: "gemini-2.0-flash",
-      contents: [
-        {
-          role: "user",
-          parts: [
-            { text: SYSTEM_PROMPT },
-            {
-              text: `Client's travel wish: "${prompt.trim()}"`,
-            },
-          ],
-        },
+    const completion = await openai.chat.completions.create({
+      model: "gpt-4o-mini",
+      messages: [
+        { role: "system", content: SYSTEM_PROMPT },
+        { role: "user", content: `Client's travel wish: "${prompt.trim()}"` },
       ],
-      config: {
-        temperature: 0.9,
-        topP: 0.95,
-        maxOutputTokens: 4096,
-      },
+      temperature: 0.9,
+      max_tokens: 4096,
+      response_format: { type: "json_object" },
     });
 
-    const text = response.text ?? "";
+    const text = completion.choices[0]?.message?.content ?? "";
 
-    // Clean up potential markdown code fences
-    const cleaned = text
-      .replace(/```json\s*/gi, "")
-      .replace(/```\s*/g, "")
-      .trim();
-
-    const trip = JSON.parse(cleaned);
+    const trip = JSON.parse(text);
 
     return NextResponse.json({ trip });
   } catch (error: unknown) {
-    console.error("Trip generation error:", error);
+    console.error("Trip generation error:", JSON.stringify(error, Object.getOwnPropertyNames(error as object), 2));
 
-    const message =
-      error instanceof SyntaxError
-        ? "Failed to parse AI response. Please try again."
-        : "Something went wrong. Please try again.";
+    let message = "Something went wrong generating your trip. Please try again.";
+
+    if (error instanceof SyntaxError) {
+      message = "Failed to parse AI response. Please try again.";
+    } else if (error instanceof Error) {
+      message = error.message;
+    }
 
     return NextResponse.json({ error: message }, { status: 500 });
   }
